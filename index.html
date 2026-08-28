@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#7f1027">
+<title>KURMA 2026 — Pendaftaran & Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="bg bg1"></div><div class="bg bg2"></div>
+<header class="topbar">
+  <div class="brand">
+    <img src="assets/logo kurma.png" alt="Logo KURMA">
+    <div><small>SMA ANGKASA MARGAHAYU BANDUNG</small><strong>KURMA 2026</strong></div>
+  </div>
+  <nav>
+    <a href="#daftar">Daftar</a>
+    <a href="#dashboard">Dashboard</a>
+    <a href="https://docs.google.com/spreadsheets/d/1dR217eo8zGw5jP0spT2MDrcZEW6MDiijPzdc8BFaXiA/edit?gid=0#gid=0" target="_blank" rel="noopener">Spreadsheet ↗</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <div>
+    <span class="eyebrow">Kumpulan Remaja Masjid SMA Angkasa</span>
+    <h1>Luruskan Niat,<br><span>Rapatkan Shaff.</span></h1>
+    <p>Dashboard pendaftaran anggota baru KURMA 2026 untuk membangun ukhuwah, ilmu, amal, dan kontribusi positif di sekolah maupun masyarakat.</p>
+    <div class="hero-actions"><a class="primary" href="#daftar">Daftar Sekarang</a><a class="ghost" href="#dashboard">Lihat Statistik</a></div>
+  </div>
+  <div class="hero-photo">
+    <img src="assets/IMG_2608.JPG" alt="Kegiatan KURMA">
+    <div class="photo-tag"><b>KURMA 2026</b><span>Grow • Serve • Unite</span></div>
+  </div>
+</section>
+
+<section class="stats" id="dashboard">
+  <div class="stat"><span>Total Pendaftar</span><b id="total">—</b><small>Anggota terdaftar</small></div>
+  <div class="stat"><span>Laki-laki</span><b id="male">—</b><small>Pendaftar</small></div>
+  <div class="stat"><span>Perempuan</span><b id="female">—</b><small>Pendaftar</small></div>
+  <div class="stat"><span>Kelas Terbanyak</span><b id="topClass">—</b><small id="topClassSub">Belum ada data</small></div>
+</section>
+
+<section class="layout" id="daftar">
+<article class="card form-card">
+  <div class="card-head">
+    <div><span class="label">OPEN RECRUITMENT</span><h2>Pendaftaran Anggota Baru</h2><p>Lengkapi data berikut dengan benar.</p></div>
+    <span class="live">● FORM AKTIF</span>
+  </div>
+  <form id="registrationForm">
+    <div class="grid">
+      <label><span>Nama Lengkap <em>*</em></span><input id="nama" name="nama" required maxlength="100" placeholder="Nama lengkap"></label>
+      <label><span>Kelas <em>*</em></span><select id="kelas" name="kelas" required><option value="">Pilih kelas</option><option>X</option><option>XI</option><option>XII</option></select></label>
+      <label><span>Jenis Kelamin <em>*</em></span><select id="jenisKelamin" name="jenisKelamin" required><option value="">Pilih</option><option>Laki-laki</option><option>Perempuan</option></select></label>
+      <label><span>Nomor HP <em>*</em></span><input id="nomorHP" name="nomorHP" required inputmode="tel" maxlength="20" placeholder="08xxxxxxxxxx"></label>
+      <label class="wide"><span>Alasan Masuk Menjadi Anggota <em>*</em></span><textarea id="alasan" name="alasan" required maxlength="500" rows="5" placeholder="Tuliskan alasan dan harapanmu bergabung dengan KURMA..."></textarea><small class="counter"><b id="count">0</b>/500</small></label>
+    </div>
+    <input type="hidden" name="action" value="register"><input type="hidden" name="tahun" value="2026">
+    <button id="submitBtn" class="submit" type="submit"><span>Kirim Pendaftaran</span><i></i></button>
+    <div id="msg" class="msg"></div>
+  </form>
+</article>
+
+<aside class="card profile">
+  <img class="cover" src="assets/IMG-20240321-WA0006.jpg" alt="Kegiatan sosial KURMA">
+  <div class="profile-body">
+    <img class="profile-logo" src="assets/logo kurma.png" alt="Logo KURMA">
+    <span class="label">PROFIL ORGANISASI</span>
+    <h2>KURMA</h2><b>Kumpulan Remaja Masjid SMA Angkasa</b>
+    <blockquote>“Luruskan Niat, Rapatkan Shaff”</blockquote>
+    <p>Tempat bertumbuh bagi pelajar untuk memperkuat ukhuwah, meningkatkan kepedulian, dan berkontribusi melalui kegiatan keislaman dan sosial.</p>
+    <div class="values"><span>Ukhuwah</span><span>Ilmu</span><span>Amal</span><span>Kontribusi</span></div>
+  </div>
+</aside>
+</section>
+
+<section class="data-card card">
+  <div class="table-head">
+    <div><span class="label">ADMIN VIEW</span><h2>Data Pendaftar</h2><p>Data dibaca dari Google Spreadsheet melalui Apps Script.</p></div>
+    <div class="tools">
+      <input id="search" type="search" placeholder="Cari nama / kelas / HP...">
+      <select id="filterClass"><option value="">Semua kelas</option><option>X</option><option>XI</option><option>XII</option></select>
+      <select id="filterGender"><option value="">Semua gender</option><option>Laki-laki</option><option>Perempuan</option></select>
+      <button id="refresh" class="tool-btn">↻ Refresh</button>
+      <button id="export" class="tool-btn dark">⇩ Excel</button>
+    </div>
+  </div>
+  <div class="table-wrap">
+    <table id="dataTable">
+      <thead><tr><th>No</th><th>ID</th><th>Nama Lengkap</th><th>Kelas</th><th>Jenis Kelamin</th><th>Nomor HP</th><th>Alasan</th><th>Waktu</th></tr></thead>
+      <tbody><tr><td colspan="8" class="empty">Memuat data…</td></tr></tbody>
+    </table>
+  </div>
+  <div class="table-foot"><span id="shown">0 data</span><span>Terakhir diperbarui: <b id="updated">—</b></span></div>
+</section>
+
+<section class="gallery">
+  <div class="gallery-title"><span class="label">DOKUMENTASI</span><h2>Bertumbuh, Berkhidmat, Bersama</h2></div>
+  <div class="photos">
+    <img src="assets/IMG-20230507-WA0025.jpg" alt="Kegiatan KURMA">
+    <img src="assets/IMG-20220628-WA0017.jpg" alt="Kegiatan KURMA">
+    <img src="assets/IMG-20240321-WA0006.jpg" alt="Kegiatan KURMA">
+  </div>
+</section>
+</main>
+<footer><div><img src="assets/logo kurma.png"><b>KURMA 2026</b><small>Kumpulan Remaja Masjid SMA Angkasa</small></div><span>Luruskan Niat • Rapatkan Shaff</span></footer>
+<script src="app.js"></script>
+</body>
+</html>
